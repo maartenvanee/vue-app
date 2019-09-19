@@ -1,4 +1,4 @@
-Vue.component('person', {
+Vue.component('person-component', {
     props: ['person'],
     methods: {
         incrementAge(person) {
@@ -20,7 +20,6 @@ Vue.component('person', {
     `
 })
 
-
 const app = new Vue({
     el: "#app",
     data: {
@@ -39,16 +38,26 @@ const app = new Vue({
                 age: 26,
             }
         ],
-        words: ['Consectetur', 'Ornare', 'Purus']
+        words: ['Consectetur', 'Ornare', 'Purus'],
+        message: "Hello, v-model updates this message!"
     },
     template: `
         <div>
             <h1>{{title}}</h1>
             <br>
-            <person v-for="person in persons" v-bind:person="person" v-bind:key="person.id"/>
+            <person-component
+              v-for="person in persons"
+              v-bind:person="person"
+              v-bind:key="person.id"/>
+
             <br>
             <br>
             <p v-for="word in words">{{word}}</p>
+
+            <br>
+            <br>
+            <input v-model="message" size="40">
+            <p>{{message}}</p>
         </div>
     `
 });
