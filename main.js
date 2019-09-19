@@ -1,4 +1,4 @@
-Vue.component( 'person', {
+Vue.component('person', {
     props: ['person'],
     methods: {
         incrementAge(person) {
@@ -8,11 +8,14 @@ Vue.component( 'person', {
     },
     template: `
         <div>
-            <h2>Name {{person.first}} {{person.last}}</h2>
-            <h2>Age {{person.age}}</h2>
+            <h2>Name: {{person.first}} {{person.last}}</h2>
+            <h2>Age: {{person.age}}</h2>
             <button v-on:click="person.age += 1">+1 year</button>
             <button v-on:click="person.age -= 1">-1 year</button>
             <button v-on:click="incrementAge(person)">+10</button>
+            <br>
+            <br>
+            <br>
         </div>
     `
 })
@@ -21,15 +24,18 @@ Vue.component( 'person', {
 const app = new Vue({
     el: "#app",
     data: {
+        title: "Vue app test",
         persons: [
             {
-                first: "Maarten",
-                last: "van Ee",
+                id: 1,
+                first: "Fermentum",
+                last: "Porta",
                 age: 31,
             },
             {
-                first: "Eline",
-                last: "van Ee",
+                id: 2,
+                first: "Malesuada",
+                last: "Fusce",
                 age: 26,
             }
         ],
@@ -37,7 +43,11 @@ const app = new Vue({
     },
     template: `
         <div>
-            <person v-for="person in persons" v-bind:person="person"/>
+            <h1>{{title}}</h1>
+            <br>
+            <person v-for="person in persons" v-bind:person="person" v-bind:key="person.id"/>
+            <br>
+            <br>
             <p v-for="word in words">{{word}}</p>
         </div>
     `
