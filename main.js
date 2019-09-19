@@ -9,7 +9,7 @@ Vue.component('person', {
     template: `
         <div>
             <h2>Name: {{person.first}} {{person.last}}</h2>
-            <h2>Age: {{person.age}}</h2>
+            <h2>Age: {{person.age}} <span v-if="person.age > 60">(Old)</span></h2>
             <button v-on:click="person.age += 1">+1 year</button>
             <button v-on:click="person.age -= 1">-1 year</button>
             <button v-on:click="incrementAge(person)">+10</button>
